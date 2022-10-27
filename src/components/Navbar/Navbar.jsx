@@ -1,50 +1,40 @@
 import React from 'react';
-const NavLinkStyle = {
-  color: '#000000',
-  marginLeft: '0.5rem',
-  marginRight: '0.5rem',
-  fontSize: '0.8rem',
-};
-const NavLinkBrand = {
-  fontWeight: 'bold',
-  fontSize: '1rem',
-};
 
 export default function Navbar() {
   return (
     <div style={{ backgroundColor: 'rgb(255,102,0)', height: '3vh' }}>
-      <a href='#' style={{ ...NavLinkStyle, ...NavLinkBrand }}>
+      <a href='#' className='nav-link nav-link-brand'>
         Hacker News
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         new
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         past
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         comments
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         ask
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         show
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         jobs
       </a>
       |
-      <a href='#' style={NavLinkStyle}>
+      <a href='#' className='nav-link'>
         submit
       </a>
-      <a href='#' style={{ float: 'right', ...NavLinkStyle }}>
+      <a href='#' className='nav-link' style={{ float: 'right' }}>
         login
       </a>
     </div>

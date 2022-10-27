@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+body {
+  font-family: 'Verdana',
+    'Geneva',
+    'sans-serif';
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.nav-link {
+  color: #000000;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-link-brand {
+  font-weight: bold;
+  font-size: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.article-brief-description {
+  color: #828282;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+.link {
+  text-decoration: none;
+}
+
+.link:hover {
+  cursor: pointer;
+}
+
+.link:visited {
+  color: #828282;
+}
+
+.article-header {
+  color: #000000;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+.article-header:hover {
+  cursor: pointer;
+}
+.article-header:visited {
+  color: #828282;
+}
+
+.article-number {
+  font-size: 0.8rem;
+  min-width: 1.5rem;
+  color: #828282;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.org-filter {
+  color: #828282;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+  text-decoration: none;
 }
