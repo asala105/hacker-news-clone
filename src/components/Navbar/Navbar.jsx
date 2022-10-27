@@ -1,6 +1,5 @@
 import React from 'react';
 const NavLinkStyle = {
-  textDecoration: 'none',
   color: '#000000',
   marginLeft: '0.5rem',
   marginRight: '0.5rem',
@@ -11,7 +10,7 @@ const NavLinkBrand = {
   fontSize: '1rem',
 };
 
-export default function NavbarComponent() {
+export default function Navbar() {
   return (
     <div style={{ backgroundColor: 'rgb(255,102,0)', height: '3vh' }}>
       <a href='#' style={{ ...NavLinkStyle, ...NavLinkBrand }}>
