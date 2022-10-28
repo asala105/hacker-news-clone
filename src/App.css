@@ -4,6 +4,11 @@ body {
     'sans-serif';
 }
 
+hr {
+  background-color: rgb(255, 102, 0);
+  height: 1px;
+  border: none;
+}
 .nav-link {
   color: #000000;
   margin-left: 0.5rem;
@@ -45,9 +50,6 @@ body {
 .article-header:hover {
   cursor: pointer;
 }
-.article-header:visited {
-  color: #828282;
-}
 
 .article-number {
   font-size: 0.8rem;
@@ -63,4 +65,7 @@ body {
   margin-left: 0.5rem;
   font-size: 0.5rem;
   text-decoration: none;
+}
+.pagination-link:hover {
+  color: rgb(255, 102, 0);
 }

@@ -14,13 +14,14 @@ export default function Pagination(props) {
         display: 'flex',
         justifyContent: 'space-around',
         margin: 'auto',
+        fontSize: '0.7rem',
       }}>
       {pageNumbers.map((pageNumber) => (
         <a
           onClick={() => {
             paginate(pageNumber);
           }}
-          className='link'
+          className='link pagination-link'
           href='#'>
           {pageNumber}
         </a>
