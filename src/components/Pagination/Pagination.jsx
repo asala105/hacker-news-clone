@@ -16,15 +16,15 @@ export default function Pagination(props) {
         margin: 'auto',
         fontSize: '0.7rem',
       }}>
-      {pageNumbers.map((pageNumber) => (
-        <a
+      {pageNumbers.map((pageNumber, index) => (
+        <p
+          key={index}
           onClick={() => {
             paginate(pageNumber);
           }}
-          className='link pagination-link'
-          href='#'>
+          className='link pagination-link'>
           {pageNumber}
-        </a>
+        </p>
       ))}
     </div>
   );
