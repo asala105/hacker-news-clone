@@ -11,16 +11,17 @@ export default function HomePage() {
   const [articlesPerPage] = useState(30);
   const fetchData = async () => {
     const response = await fetchArticles();
-    console.log(response);
     setArticles(response.data);
   };
+
   useEffect(() => {
     fetchData();
   }, []);
 
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles?.slice(
+
+  const currentArticlesIds = articles?.slice(
     indexOfFirstArticle,
     indexOfLastArticle
   );
@@ -36,7 +37,11 @@ export default function HomePage() {
         backgroundColor: 'rgb(246,246,239)',
       }}>
       <Navbar />
-      <ArticlesList articles={currentArticles} />
+      <ArticlesList
+        indexOfFirstArticle={indexOfFirstArticle}
+        indexOfLastArticle={indexOfLastArticle}
+        currentArticlesIds={currentArticlesIds}
+      />
       <hr />
       <Pagination
         articlesPerPage={articlesPerPage}

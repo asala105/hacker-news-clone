@@ -1,7 +1,9 @@
 import React from 'react';
 
 export default function Article(props) {
-  const { index, title, points, author, time, comments, org } = props;
+  const { index, title, titleLink, points, author, time, comments, org } =
+    props;
+
   return (
     <div
       style={{
@@ -16,7 +18,7 @@ export default function Article(props) {
         </a>
       </div>
       <div>
-        <a href='#' className='article-header'>
+        <a href={titleLink} className='article-header'>
           {title}
         </a>
         {/* filtering */}
