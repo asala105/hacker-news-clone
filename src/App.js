@@ -1,7 +1,8 @@
 import './App.css';
 import { useEffect } from 'react';
 import WebFont from 'webfontloader';
-import HomePage from './pages/HomePage';
+import { Layout, HomePage, UserDetails } from './pages';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   useEffect(() => {
@@ -12,7 +13,14 @@ function App() {
     });
   }, []);
   return (
-    <HomePage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route exact path="user" element={<UserDetails />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

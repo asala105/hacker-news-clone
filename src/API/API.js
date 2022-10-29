@@ -18,3 +18,11 @@ export const fetchArticleDetails = async (id) => {
         console.error(error);
     }
 }
+
+export const fetchUserDetails = async (id) => {
+    try {
+        return await axios.get(`${baseUrl}/user/${id}.json`);
+    } catch (error) {
+        console.error(error);
+    }
+}

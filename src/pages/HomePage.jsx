@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from '../components/Navbar';
 import { ArticlesList } from '../components/ArticlesList';
 import { Footer } from '../components/Footer';
 import { fetchArticles } from '../API/API';
@@ -30,13 +29,7 @@ export default function HomePage() {
     setCurrentPage(pageNumber);
   };
   return (
-    <div
-      style={{
-        margin: 'auto',
-        width: '80%',
-        backgroundColor: 'rgb(246,246,239)',
-      }}>
-      <Navbar />
+    <div>
       <ArticlesList
         indexOfFirstArticle={indexOfFirstArticle}
         indexOfLastArticle={indexOfLastArticle}

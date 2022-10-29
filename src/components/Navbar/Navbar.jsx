@@ -1,42 +1,50 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
     <div style={{ backgroundColor: 'rgb(255,102,0)', height: '3vh' }}>
-      <a href='#' className='nav-link nav-link-brand'>
+      <Link to='#' className='nav-link nav-link-brand'>
         Hacker News
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         new
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         past
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         comments
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         ask
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         show
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         jobs
-      </a>
+      </Link>
       |
-      <a href='#' className='nav-link'>
+      <Link to='#' className='nav-link'>
+        {' '}
         submit
-      </a>
-      <a href='#' className='nav-link' style={{ float: 'right' }}>
+      </Link>
+      <Link to='#' className='nav-link' style={{ float: 'right' }}>
         login
-      </a>
+      </Link>
     </div>
   );
 }

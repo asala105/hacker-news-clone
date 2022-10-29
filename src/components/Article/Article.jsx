@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Article(props) {
   const { index, title, titleLink, points, author, time, comments, org } =
@@ -29,7 +30,9 @@ export default function Article(props) {
         <span className='article-brief-description'>
           <a href='#' className='link'>{` ${points} `}</a> points by{' '}
           {/* show user info */}
-          <a href='#' className='link'>{` ${author} `}</a>{' '}
+          <Link to={`/user?id=${author}`} className='link'>
+            {` ${author} `}
+          </Link>{' '}
           {/* show post details */}
           <a href='#' className='link'>{` ${time} `}</a>
           {/* only works if logged in */}|

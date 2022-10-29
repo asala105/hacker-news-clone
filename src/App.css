@@ -1,7 +1,5 @@
 body {
-  font-family: 'Verdana',
-    'Geneva',
-    'sans-serif';
+  font-family: 'Verdana', 'Geneva', 'sans-serif';
 }
 
 hr {
@@ -31,6 +29,7 @@ hr {
 }
 .link {
   text-decoration: none;
+  color: #828282;
 }
 
 .link:hover {
