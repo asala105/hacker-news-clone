@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { fetchUserDetails } from '../API/API';
 import { UnixTimeToDate } from '../Utils';
 import { useSearchParams } from 'react-router-dom';
+import parse from 'html-react-parser';
 
 export default function UserDetails() {
   const [userDetails, setUserDetails] = useState();
@@ -34,7 +35,7 @@ export default function UserDetails() {
         </tr>
         <tr>
           <th>about:</th>
-          <td>{userDetails?.about}</td>
+          <td> {parse(userDetails?.about ? userDetails.about : '')}</td>
         </tr>
       </tbody>
     </table>

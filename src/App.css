@@ -68,3 +68,11 @@ hr {
 .pagination-link:hover {
   color: rgb(255, 102, 0);
 }
+
+td {
+  text-align: start;
+}
+
+th {
+  text-align: start;
+}

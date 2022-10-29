@@ -4,45 +4,45 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   return (
     <div style={{ backgroundColor: 'rgb(255,102,0)', height: '3vh' }}>
-      <Link to='#' className='nav-link nav-link-brand'>
+      <Link to='/news' className='nav-link nav-link-brand'>
         Hacker News
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/newest' className='nav-link'>
         {' '}
         new
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/front' className='nav-link'>
         {' '}
         past
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/newcomments' className='nav-link'>
         {' '}
         comments
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/ask' className='nav-link'>
         {' '}
         ask
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/show' className='nav-link'>
         {' '}
         show
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/jobs' className='nav-link'>
         {' '}
         jobs
       </Link>
       |
-      <Link to='#' className='nav-link'>
+      <Link to='/submit' className='nav-link'>
         {' '}
         submit
       </Link>
-      <Link to='#' className='nav-link' style={{ float: 'right' }}>
+      <Link to='/login' className='nav-link' style={{ float: 'right' }}>
         login
       </Link>
     </div>
