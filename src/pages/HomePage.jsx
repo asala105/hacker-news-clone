@@ -4,6 +4,7 @@ import { Footer } from '../components/Footer';
 import { fetchArticlesIds, fetchArticleDetails } from '../API/API';
 import { Pagination } from '../components/Pagination';
 import { Oval } from 'react-loading-icons';
+import { useParams } from 'react-router-dom';
 
 export default function HomePage() {
   const [articlesIds, setArticlesIds] = useState([]);
@@ -11,12 +12,14 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
   const [articlesPerPage] = useState(30);
-  const dataFetchedRef = useRef(false);
+
+  const { filter } = useParams();
+
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
   const fetchData = async () => {
     setLoading(true);
-    const response = await fetchArticlesIds();
+    const response = await fetchArticlesIds(filter);
     setArticlesIds(response.data);
 
     let articlesDetails = [];
@@ -46,11 +49,8 @@ export default function HomePage() {
     setLoading(false);
   };
   useEffect(() => {
-    if (dataFetchedRef.current) return;
-    dataFetchedRef.current = true;
-
     fetchData();
-  }, []);
+  }, [filter]);
 
   const slicedArticlesDetails = async (ids) => {
     let articlesDetails = [];

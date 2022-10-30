@@ -4,6 +4,9 @@ const baseUrl = 'https://hacker-news.firebaseio.com/v0'
 const articlesFilter = {
     jobs: 'jobstories',
     newest: 'newstories',
+    news: 'topstories',
+    ask: "askstories",
+    show: 'showstories'
 };
 
 export const fetchArticlesIds = async (filter) => {
