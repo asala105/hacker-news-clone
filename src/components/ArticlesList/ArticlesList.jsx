@@ -1,28 +1,13 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React from 'react';
 import { Article } from '../Article';
-import { fetchArticleDetails } from '../../API/API';
 import { GetTimeDifference } from '../../Utils';
 
 export default function ArticlesList(props) {
-  const { currentArticlesIds, indexOfFirstArticle } = props;
-  const [articles, setCurrentArticles] = useState([]);
-  const getArticlesDetails = async () => {
-    const articlesDetails = [];
-    for (const id of currentArticlesIds) {
-      const articleDetails = await fetchArticleDetails(id);
-
-      articlesDetails.push(articleDetails.data);
-    }
-    setCurrentArticles(articlesDetails);
-  };
-  useEffect(() => {
-    getArticlesDetails();
-  }, [currentArticlesIds]);
+  const { articleDetails, indexOfFirstArticle } = props;
 
   return (
     <div style={{ minHeight: '95vh' }}>
-      {articles.map((article, index) => (
+      {articleDetails.map((article, index) => (
         <Article
           key={index}
           index={index + indexOfFirstArticle + 1}

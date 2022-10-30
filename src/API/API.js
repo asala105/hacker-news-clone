@@ -1,7 +1,7 @@
 import axios from 'axios';
 const baseUrl = 'https://hacker-news.firebaseio.com/v0'
 
-export const fetchArticles = async (articlesFilter = 'topstories') => {
+export const fetchArticlesIds = async (articlesFilter = 'topstories') => {
     try {
         const articlesIds = await axios.get(`${baseUrl}/${articlesFilter}.json`);
         return articlesIds;
