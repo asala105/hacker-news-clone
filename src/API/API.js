@@ -5,12 +5,13 @@ const articlesFilter = {
     jobs: 'jobstories',
     newest: 'newstories',
     news: 'topstories',
-    ask: "askstories",
-    show: 'showstories'
+    ask: 'askstories',
+    show: 'showstories',
+    front: 'topstories'
 };
 
 export const fetchArticlesIds = async (filter) => {
-    const filtering = filter ? articlesFilter[filter] : 'topstories';
+    const filtering = (filter && articlesFilter[filter]) ? articlesFilter[filter] : 'topstories';
     try {
         const articlesIds = await axios.get(`${baseUrl}/${filtering}.json`);
         return articlesIds;

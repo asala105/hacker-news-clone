@@ -5,16 +5,29 @@ import { fetchArticlesIds, fetchArticleDetails } from '../API/API';
 import { Pagination } from '../components/Pagination';
 import { Oval } from 'react-loading-icons';
 import { useParams } from 'react-router-dom';
+import { groupArticlesByDate } from '../Utils';
+import { DateFilter } from '../components/DateFilter';
+import moment from 'moment';
 
 export default function HomePage() {
   const [articlesIds, setArticlesIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [dateFilter, setDateFilter] = useState(moment().subtract(1, 'days').format('MMMM DD, YYYY'));
   const [articlesPerPage] = useState(30);
 
   const { filter } = useParams();
 
+  const changeDateFilter = (direction, duration) => {
+    const tempDate = moment(dateFilter, 'MMMM DD, YYYY');
+    if (direction === 'forward') {
+      tempDate.add(1, duration);
+    } else {
+      tempDate.subtract(1, duration);
+    }
+    setDateFilter(tempDate.format('MMMM DD, YYYY'))
+  }
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
   const fetchData = async () => {
@@ -50,8 +63,11 @@ export default function HomePage() {
   };
   useEffect(() => {
     fetchData();
+    const articlesByDate = groupArticlesByDate(articles)
+    console.log(articlesByDate)
   }, [filter]);
 
+  useEffect(() => { console.log(dateFilter); }, [dateFilter]);
   const slicedArticlesDetails = async (ids) => {
     let articlesDetails = [];
     const articlesPromise = [];
@@ -85,6 +101,9 @@ export default function HomePage() {
         </div>
       ) : (
         <>
+            {filter === 'front' &&
+              <DateFilter date={dateFilter} changeDateFilter={changeDateFilter} />
+            }
           <ArticlesList
             indexOfFirstArticle={indexOfFirstArticle}
             indexOfLastArticle={indexOfLastArticle}
