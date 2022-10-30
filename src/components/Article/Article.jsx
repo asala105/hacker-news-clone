@@ -28,10 +28,9 @@ export default function Article(props) {
           <Link to={`/user?id=${article.by}`} className='link'>
             {` ${article.by} `}
           </Link>{' '}
-          {/* show post details */}
-          <a href='#' className='link'>{` ${GetTimeDifference(article.time)} `}</a>
+          <Link to={`/item?id=${article.id}`} className='link'>{` ${GetTimeDifference(article.time)} `}</Link>
           {/* only works if logged in */}|
-          <Link to='/login' className='nav-link'>
+          <Link to='/login' className='link'>
             {' '}
             hide
           </Link>
@@ -40,8 +39,8 @@ export default function Article(props) {
             {' '}
             past
           </a>{' '}
-          |{/* show post details */}
-          <a href='#' className='link'>{` ${article.kids ? article.kids.length : 0} `}</a>comments
+          |
+          <Link to={`/item?id=${article.id}`} className='link'>{` ${article.kids ? article.kids.length : 0} `}</Link>comments
         </span>
       </td>
     </tr>

@@ -106,3 +106,15 @@ th {
 .footer-links:hover {
   color: #828282;
 }
+.comment-text {
+  color: #000000;
+  margin-left: 0.5rem;
+  font-size: 0.6rem;
+  text-decoration: none;
+  display: block;
+}
+
+.vote-icon {
+  display: table-cell;
+  vertical-align: initial;
+}
