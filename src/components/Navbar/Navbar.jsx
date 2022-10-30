@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
-    <div style={{ backgroundColor: 'rgb(255,102,0)', height: '3vh' }}>
+    <div className='nav-bar'>
       <Link to='/news' className='nav-link nav-link-brand'>
         Hacker News
       </Link>

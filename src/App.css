@@ -118,3 +118,25 @@ th {
   display: table-cell;
   vertical-align: initial;
 }
+.layout {
+  margin: auto;
+  width: 80%;
+  background-color: rgb(246, 246, 239);
+}
+
+.nav-bar {
+  background-color: rgb(255, 102, 0);
+  height: 3vh;
+}
+
+@media only screen and (max-width: 760px) {
+  .layout {
+    width: 100%;
+  }
+
+  .nav-bar {
+    height: 5vh;
+    align-items: center;
+    display: flex;
+  }
+}

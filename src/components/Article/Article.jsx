@@ -19,9 +19,9 @@ export default function Article(props) {
           {article.title}
         </a>
         {/* filtering */}
-        <a href='#' className='org-filter'>
+        {/* <a href='#' className='org-filter'>
           ({'mused.org'})
-        </a>
+        </a> */}
 
         <span className='article-brief-description'>
           <a href='#' className='link'>{` ${article.score ? article.score : 0} `}</a> points by{' '}

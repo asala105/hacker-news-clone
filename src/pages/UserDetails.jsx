@@ -21,19 +21,19 @@ export default function UserDetails() {
   return (
     <table>
       <tbody>
-        <tr>
+        <tr className='article-number'>
           <th>user:</th>
           <td>{userDetails?.id}</td>
         </tr>
-        <tr>
+        <tr className='article-number'>
           <th>created:</th>
-          <td>{UnixTimeToDate(userDetails?.created)}</td>
+          <td style={{ color: "#000000" }}>{UnixTimeToDate(userDetails?.created)}</td>
         </tr>
-        <tr>
+        <tr className='article-number'>
           <th>karma:</th>
           <td>{userDetails?.karma}</td>
         </tr>
-        <tr>
+        <tr className='article-number'>
           <th>about:</th>
           <td> {parse(userDetails?.about ? userDetails.about : '')}</td>
         </tr>

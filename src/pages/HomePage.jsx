@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArticlesList } from '../components/ArticlesList';
 import { Footer } from '../components/Footer';
 import { fetchArticlesIds, fetchArticleDetails } from '../API/API';
 import { Pagination } from '../components/Pagination';
 import { Oval } from 'react-loading-icons';
 import { useParams } from 'react-router-dom';
-import { groupArticlesByDate } from '../Utils';
+// import { groupArticlesByDate } from '../Utils';
 import { DateFilter } from '../components/DateFilter';
 import moment from 'moment';
 
@@ -14,8 +14,11 @@ export default function HomePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  // const [articlesByDate, setArticlesByDate] = useState(new Map());
   const [dateFilter, setDateFilter] = useState(moment().subtract(1, 'days').format('MMMM DD, YYYY'));
   const [articlesPerPage] = useState(30);
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
 
   const { filter } = useParams();
 
@@ -28,16 +31,13 @@ export default function HomePage() {
     }
     setDateFilter(tempDate.format('MMMM DD, YYYY'))
   }
-  const indexOfLastArticle = currentPage * articlesPerPage;
-  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+
   const fetchData = async () => {
     setLoading(true);
     const response = await fetchArticlesIds(filter);
     setArticlesIds(response.data);
-
     let articlesDetails = [];
     const articlesPromises = [];
-
     for (
       let i = 1;
       i <= Math.ceil(response.data.length / articlesPerPage);
@@ -51,7 +51,6 @@ export default function HomePage() {
         articlesPromises.push(slicedArticlesDetails(slicedArticlesIds));
       }
     }
-
     const articlesData = await Promise.all(articlesPromises);
     for (const data of articlesData) {
       for (const item of data) {
@@ -63,11 +62,15 @@ export default function HomePage() {
   };
   useEffect(() => {
     fetchData();
-    const articlesByDate = groupArticlesByDate(articles)
-    console.log(articlesByDate)
   }, [filter]);
 
-  useEffect(() => { console.log(dateFilter); }, [dateFilter]);
+  // useEffect(() => {
+  //   if (dateFilter && filter === 'front') {
+  //     const articlesGroupedByDate = groupArticlesByDate(articles)
+  //     setArticlesByDate(articlesGroupedByDate)
+  //   }
+  // }, [dateFilter, filter]);
+
   const slicedArticlesDetails = async (ids) => {
     let articlesDetails = [];
     const articlesPromise = [];
@@ -113,7 +116,7 @@ export default function HomePage() {
           <hr />
           <Pagination
             itemsPerPage={articlesPerPage}
-            totalNumberOfItems={articlesIds?.length}
+              totalNumberOfItems={articlesIds?.length}
             paginate={paginate}
           />
         </>
