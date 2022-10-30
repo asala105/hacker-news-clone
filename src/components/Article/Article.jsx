@@ -31,10 +31,10 @@ export default function Article(props) {
           {/* show post details */}
           <a href='#' className='link'>{` ${time} `}</a>
           {/* only works if logged in */}|
-          <a href='#' className='link'>
+          <Link to='/login' className='nav-link'>
             {' '}
             hide
-          </a>{' '}
+          </Link>
           |{' '}
           <a href='#' className='link'>
             {' '}

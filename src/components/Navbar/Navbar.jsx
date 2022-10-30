@@ -38,7 +38,7 @@ export default function Navbar() {
         jobs
       </Link>
       |
-      <Link to='/submit' className='nav-link'>
+      <Link to='/login' className='nav-link'>
         {' '}
         submit
       </Link>

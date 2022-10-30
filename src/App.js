@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect } from 'react';
 import WebFont from 'webfontloader';
-import { Layout, HomePage, UserDetails, JobsPage, NewArticlesPage } from './pages';
+import { Layout, HomePage, UserDetails, JobsPage, LoginPage } from './pages';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
           <Route exact path="/jobs" element={<JobsPage />} />
           <Route exact path="/:filter" element={<HomePage />} />
         </Route>
+        <Route exact path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
   );
