@@ -3,6 +3,7 @@ import { ArticlesList } from '../components/ArticlesList';
 import { Footer } from '../components/Footer';
 import { fetchArticlesIds, fetchArticleDetails } from '../API/API';
 import { Pagination } from '../components/Pagination';
+import { Oval } from 'react-loading-icons';
 
 export default function HomePage() {
   const [articlesIds, setArticlesIds] = useState([]);
@@ -79,7 +80,9 @@ export default function HomePage() {
   return (
     <div>
       {loading ? (
-        <h1>Loading...</h1>
+        <div className='loading-icon'>
+          <Oval stroke='rgb(255, 102, 0)' />
+        </div>
       ) : (
         <>
           <ArticlesList

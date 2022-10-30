@@ -6,19 +6,14 @@ export default function Article(props) {
     props;
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
-      }}>
-      <div className='article-number'>
+    <tr>
+      <th className='article-number'>
         <span>{index}.</span>
         <a href='#' className='link'>
           &#9650;
         </a>
-      </div>
-      <div>
+      </th>
+      <td>
         <a href={titleLink} className='article-header'>
           {title}
         </a>
@@ -40,10 +35,15 @@ export default function Article(props) {
             {' '}
             hide
           </a>{' '}
+          |{' '}
+          <a href='#' className='link'>
+            {' '}
+            past
+          </a>{' '}
           |{/* show post details */}
           <a href='#' className='link'>{` ${comments} `}</a>comments
         </span>
-      </div>
-    </div>
+      </td>
+    </tr>
   );
 }

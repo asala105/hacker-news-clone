@@ -51,12 +51,10 @@ hr {
 }
 
 .article-number {
+  text-align: right;
   font-size: 0.8rem;
   min-width: 1.5rem;
   color: #828282;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-evenly;
 }
 
 .org-filter {
@@ -75,4 +73,10 @@ td {
 
 th {
   text-align: start;
+}
+.loading-icon {
+  margin: 5rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
