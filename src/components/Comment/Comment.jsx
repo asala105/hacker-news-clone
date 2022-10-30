@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { GetTimeDifference } from '../../Utils';
 import parse from 'html-react-parser';
+import { fetchArticleDetails } from '../../API/API';
 
 export default function Comment(props) {
     const { comment } = props
-//get Children Comments here 
+    const [childrenComments, setChildrenComments] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const children = comment.kids;
+            const childrenData = []
+            for (const commentId of children) {
+                const comment = await fetchArticleDetails(commentId);
+                childrenData.push(comment.data);
+            }
+            setChildrenComments(childrenData)
+        }
+        fetchData();
+    }, [comment])
     return (
+        <>
         <tr>
             <th className='article-number vote-icon'>
                 <a href='#' className='link'>
@@ -23,5 +38,15 @@ export default function Comment(props) {
                 <p className='comment-text'>{parse(comment?.text ? comment.text : '')}</p>
             </td>
         </tr>
+            <tr><th className='article-number vote-icon'>
+
+            </th>
+                <td>
+                    {childrenComments?.map((child, index) => (
+                        <Comment comment={child} key={index} />
+                    ))}
+                </td>
+            </tr>
+        </>
     )
 }
