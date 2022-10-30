@@ -1,9 +1,15 @@
 import axios from 'axios';
 const baseUrl = 'https://hacker-news.firebaseio.com/v0'
 
-export const fetchArticlesIds = async (articlesFilter = 'topstories') => {
+const articlesFilter = {
+    jobs: 'jobstories',
+    newest: 'newstories',
+};
+
+export const fetchArticlesIds = async (filter) => {
+    const filtering = filter ? articlesFilter[filter] : 'topstories';
     try {
-        const articlesIds = await axios.get(`${baseUrl}/${articlesFilter}.json`);
+        const articlesIds = await axios.get(`${baseUrl}/${filtering}.json`);
         return articlesIds;
     } catch (error) {
         console.error(error);

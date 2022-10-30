@@ -80,3 +80,9 @@ th {
   align-content: center;
   justify-content: center;
 }
+.jobs-top-note {
+  color: #828282;
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  text-decoration: none;
+}

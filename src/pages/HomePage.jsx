@@ -93,8 +93,8 @@ export default function HomePage() {
           />
           <hr />
           <Pagination
-            articlesPerPage={articlesPerPage}
-            totalArticles={articlesIds?.length}
+            itemsPerPage={articlesPerPage}
+            totalNumberOfItems={articlesIds?.length}
             paginate={paginate}
           />
         </>
