@@ -13,7 +13,7 @@ export default function UserDetails() {
     const fetchData = async () => {
       const userId = searchParams.get('id');
       const user = await fetchUserDetails(userId);
-      console.log(user);
+
       setUserDetails(user.data);
     };
     fetchData();
