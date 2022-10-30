@@ -86,3 +86,23 @@ th {
   font-size: 0.8rem;
   text-decoration: none;
 }
+
+.footer-links-wrapper {
+  color: #000000;
+  margin-left: 0.5rem;
+  font-size: 0.5rem;
+  text-decoration: none;
+  display: block;
+}
+.footer-links {
+  color: #000000;
+  text-decoration: none;
+}
+
+.footer-links:visited {
+  color: #828282;
+}
+
+.footer-links:hover {
+  color: #828282;
+}
