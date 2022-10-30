@@ -1,70 +1,37 @@
-# Getting Started with Create React App
+## Project Name & Pitch
+Hacker News Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application used to fetch data form Hacker News API based on user preference, built with React, JavaScript, and CSS.
 
-## Available Scripts
+## Project Status
+This project is still incomplete. Users can view Top, new, ask and show articles, and job. They can access Article details and user details. Comments pages, past articles page, login and sign up are still in progress.
 
-In the project directory, you can run:
+## Installation and Setup Instructions
+To run this project on your machine, You will need `node` and `npm` installed globally on your machine.  
 
-### `npm start`
+Installation:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`npm install`  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+To Start Server:
 
-### `npm test`
+`npm start`  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To Visit App:
 
-### `npm run build`
+`localhost:3000/`  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Reflection
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - What did you set out to build?
+  I had planned to build the whole project but then I faced some obstacles like the time frame and the limitation of the APIs that can be used to get the data for the project
+  - Why was this project challenging and therefore a really good learning experience?
+  
+  - What were some unexpected obstacles?
+  the limitations of the APIs built to get the data for the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This was a 4 days long project built to assess my coding skills.  
 
-### `npm run eject`
+ I started this process by using the `create-react-app` boilerplate, then adding `react-router-6.0` and other helper packages to manage dates(`moment`), API calls `axios`, parsing html string (`html-react-parser`)...
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The most challenging part was implementing the API calls in a way to reduce the loading time of the page. for example to get all the top stories I had to run an API to get the ids of the articles (500 articles) then I would go over the list and get article details for each article which means 500 requests (it took around 1 min and 40 sec) but I managed to reduce this time to ~ 18 sec using promises.
