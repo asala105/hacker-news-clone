@@ -22,14 +22,6 @@ To Visit App:
 `localhost:3000/`  
 
 ## Reflection
-
-  - What did you set out to build?
-  I had planned to build the whole project but then I faced some obstacles like the time frame and the limitation of the APIs that can be used to get the data for the project
-  - Why was this project challenging and therefore a really good learning experience?
-  
-  - What were some unexpected obstacles?
-  the limitations of the APIs built to get the data for the project
-
 This was a 4 days long project built to assess my coding skills.  
 
  I started this process by using the `create-react-app` boilerplate, then adding `react-router-6.0` and other helper packages to manage dates(`moment`), API calls `axios`, parsing html string (`html-react-parser`)...
