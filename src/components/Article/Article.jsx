@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { GetTimeDifference } from '../../Utils';
 
 export default function Article(props) {
-  const { index, title, titleLink, points, author, time, comments, org } =
+  const { article, index } =
     props;
 
   return (
@@ -14,22 +15,21 @@ export default function Article(props) {
         </a>
       </th>
       <td>
-        <a href={titleLink} className='article-header'>
-          {title}
+        <a href={article.url} className='article-header'>
+          {article.title}
         </a>
         {/* filtering */}
         <a href='#' className='org-filter'>
-          ({org})
+          ({'mused.org'})
         </a>
 
         <span className='article-brief-description'>
-          <a href='#' className='link'>{` ${points} `}</a> points by{' '}
-          {/* show user info */}
-          <Link to={`/user?id=${author}`} className='link'>
-            {` ${author} `}
+          <a href='#' className='link'>{` ${article.score ? article.score : 0} `}</a> points by{' '}
+          <Link to={`/user?id=${article.by}`} className='link'>
+            {` ${article.by} `}
           </Link>{' '}
           {/* show post details */}
-          <a href='#' className='link'>{` ${time} `}</a>
+          <a href='#' className='link'>{` ${GetTimeDifference(article.time)} `}</a>
           {/* only works if logged in */}|
           <Link to='/login' className='nav-link'>
             {' '}
@@ -41,7 +41,7 @@ export default function Article(props) {
             past
           </a>{' '}
           |{/* show post details */}
-          <a href='#' className='link'>{` ${comments} `}</a>comments
+          <a href='#' className='link'>{` ${article.kids ? article.kids.length : 0} `}</a>comments
         </span>
       </td>
     </tr>
