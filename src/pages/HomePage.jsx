@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArticlesList } from '../components/ArticlesList';
 import { Footer } from '../components/Footer';
-import { fetchArticlesIds, fetchArticleDetails } from '../API/API';
+import { fetchArticlesIds } from '../API/API';
 import { Pagination } from '../components/Pagination';
 import { Oval } from 'react-loading-icons';
 import { useParams } from 'react-router-dom';
@@ -13,7 +13,6 @@ export default function HomePage() {
   const [articlesIds, setArticlesIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [articles, setArticles] = useState([]);
   // const [articlesByDate, setArticlesByDate] = useState(new Map());
   const [dateFilter, setDateFilter] = useState(moment().subtract(1, 'days').format('MMMM DD, YYYY'));
   const [articlesPerPage] = useState(30);
@@ -36,28 +35,6 @@ export default function HomePage() {
     setLoading(true);
     const response = await fetchArticlesIds(filter);
     setArticlesIds(response.data);
-    let articlesDetails = [];
-    const articlesPromises = [];
-    for (
-      let i = 1;
-      i <= Math.ceil(response.data.length / articlesPerPage);
-      i++
-    ) {
-      const slicedArticlesIds = response.data.slice(
-        i * articlesPerPage - articlesPerPage,
-        i * articlesPerPage
-      );
-      if (slicedArticlesIds.length) {
-        articlesPromises.push(slicedArticlesDetails(slicedArticlesIds));
-      }
-    }
-    const articlesData = await Promise.all(articlesPromises);
-    for (const data of articlesData) {
-      for (const item of data) {
-        articlesDetails.push(item);
-      }
-    }
-    setArticles([...articles, ...articlesDetails]);
     setLoading(false);
   };
   useEffect(() => {
@@ -71,24 +48,7 @@ export default function HomePage() {
   //   }
   // }, [dateFilter, filter]);
 
-  const slicedArticlesDetails = async (ids) => {
-    let articlesDetails = [];
-    const articlesPromise = [];
-    for (const id of ids) {
-      articlesPromise.push(fetchArticleDetails(id));
-    }
-    const articlesData = await Promise.all(articlesPromise);
-    for (const data of articlesData) {
-      articlesDetails.push(data.data);
-    }
-    return articlesDetails;
-  };
   const currentArticlesIds = articlesIds?.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle
-  );
-
-  const currentArticles = articles?.slice(
     indexOfFirstArticle,
     indexOfLastArticle
   );
@@ -110,8 +70,7 @@ export default function HomePage() {
           <ArticlesList
             indexOfFirstArticle={indexOfFirstArticle}
             indexOfLastArticle={indexOfLastArticle}
-            currentArticlesIds={currentArticlesIds}
-            articleDetails={currentArticles}
+              currentArticlesIds={currentArticlesIds}
           />
           <hr />
           <Pagination
