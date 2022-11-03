@@ -96,6 +96,7 @@ export default function HomePage() {
                         itemsPerPage={articlesPerPage}
                         totalNumberOfItems={articlesIds?.length}
                         paginate={paginate}
+                            currentPage={currentPage}
                     />
                 </>
             )}

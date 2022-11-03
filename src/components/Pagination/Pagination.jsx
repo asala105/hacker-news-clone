@@ -1,12 +1,9 @@
 import React from 'react';
 
 export default function Pagination(props) {
-  const { itemsPerPage, totalNumberOfItems, paginate } = props;
-  const pageNumbers = [];
+  const { itemsPerPage, totalNumberOfItems, currentPage, paginate } = props;
 
-  for (let i = 1; i <= Math.ceil(totalNumberOfItems / itemsPerPage); i++) {
-    pageNumbers.push(i);
-  }
+  const lastPage = Math.ceil(totalNumberOfItems / itemsPerPage)
 
   return (
     <div
@@ -16,16 +13,12 @@ export default function Pagination(props) {
         margin: 'auto',
         fontSize: '0.7rem',
       }}>
-      {pageNumbers.map((pageNumber, index) => (
-        <p
-          key={index}
-          onClick={() => {
-            paginate(pageNumber);
-          }}
-          className='link pagination-link'>
-          {pageNumber}
-        </p>
-      ))}
+      <button className='link pagination-link' onClick={() => { paginate(currentPage - 1) }} disabled={currentPage === 1}>
+        prev
+      </button>
+      <button className='link pagination-link' onClick={() => { paginate(currentPage + 1) }} disabled={currentPage === lastPage}>
+        next
+      </button>
     </div>
   );
 }

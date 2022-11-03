@@ -9,7 +9,6 @@ export default function JobsPage() {
   const [jobsIds, setJobsIds] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [jobs, setJobs] = useState([]);
   const [jobsPerPage] = useState(30);
   const dataFetchedRef = useRef(false);
 
@@ -20,27 +19,6 @@ export default function JobsPage() {
     setLoading(true);
     const response = await fetchArticlesIds('jobs');
     setJobsIds(response.data);
-
-    let jobsDetails = [];
-    const jobsPromises = [];
-
-    for (let i = 1; i <= Math.ceil(response.data.length / jobsPerPage); i++) {
-      const slicedJobsIds = response.data.slice(
-        i * jobsPerPage - jobsPerPage,
-        i * jobsPerPage
-      );
-      if (slicedJobsIds.length) {
-        jobsPromises.push(slicedJobsDetails(slicedJobsIds));
-      }
-    }
-
-    const jobsData = await Promise.all(jobsPromises);
-    for (const data of jobsData) {
-      for (const item of data) {
-        jobsDetails.push(item);
-      }
-    }
-    setJobs([...jobs, ...jobsDetails]);
     setLoading(false);
   };
   useEffect(() => {
@@ -50,21 +28,7 @@ export default function JobsPage() {
     fetchData();
   }, []);
 
-  const slicedJobsDetails = async (ids) => {
-    let jobsDetails = [];
-    const jobsPromise = [];
-    for (const id of ids) {
-      jobsPromise.push(fetchArticleDetails(id));
-    }
-    const jobsData = await Promise.all(jobsPromise);
-    for (const data of jobsData) {
-      jobsDetails.push(data.data);
-    }
-    return jobsDetails;
-  };
   const currentJobsIds = jobsIds?.slice(indexOfFirstJob, indexOfLastJob);
-
-  const currentJobs = jobs?.slice(indexOfFirstJob, indexOfLastJob);
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -88,14 +52,14 @@ export default function JobsPage() {
           <JobsList
             indexOfFirstJob={indexOfFirstJob}
             indexOfLastJob={indexOfLastJob}
-            currentJobsIds={currentJobsIds}
-            jobsDetails={currentJobs}
+              currentJobsIds={currentJobsIds}
           />
           <hr />
           <Pagination
             itemsPerPage={jobsPerPage}
             totalNumberOfItems={jobsIds?.length}
             paginate={paginate}
+              currentPage={currentPage}
           />
         </>
       )}
